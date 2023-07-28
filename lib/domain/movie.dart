@@ -58,7 +58,7 @@ class Movie extends Equatable {
       'director': director,
       'actors': actors,
       'plot': plot,
-      'poster_url': posterUrl,
+      'posterUrl': posterUrl,
     };
   }
 
@@ -72,7 +72,7 @@ class Movie extends Equatable {
       director: map['director'] ?? '',
       actors: map['actors'] ?? '',
       plot: map['plot'] ?? '',
-      posterUrl: map['poster_url'] ?? '',
+      posterUrl: map['posterUrl'] ?? '',
     );
   }
 

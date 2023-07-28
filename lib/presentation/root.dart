@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import 'package:movie_app_cracktech/application/genre/genre_cubit.dart';
-import 'package:movie_app_cracktech/application/movie/movie_cubit.dart';
+import 'package:movie_app_cracktech/application/genre/genre_bloc.dart';
+import 'package:movie_app_cracktech/application/genre/genre_event.dart';
+import 'package:movie_app_cracktech/application/movie/movies_bloc.dart';
 import 'package:movie_app_cracktech/domain/i_movie_repo.dart';
 import 'package:movie_app_cracktech/infrastructure/movie_repo.dart';
 import 'package:movie_app_cracktech/presentation/home_page.dart';
@@ -24,13 +25,13 @@ class Root extends StatelessWidget {
                 httpClient: http.Client(),
               ),
           child: MultiBlocProvider(providers: [
-            BlocProvider<GenreCubit>(
+            BlocProvider<GenreBloc>(
               create: (context) =>
-                  GenreCubit(RepositoryProvider.of<IMovieRepo>(context))
-                    ..loadData(),
+                  GenreBloc(RepositoryProvider.of<IMovieRepo>(context))
+                    ..add(LoadGenreEvent()),
             ),
-            BlocProvider<MovieCubit>(
-                create: (context) => MovieCubit(
+            BlocProvider<MovieBloc>(
+                create: (context) => MovieBloc(
                     movieRepo: RepositoryProvider.of<IMovieRepo>(context)))
           ], child: const HomePage()));
     });

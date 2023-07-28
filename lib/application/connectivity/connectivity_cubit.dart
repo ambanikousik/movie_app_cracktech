@@ -5,8 +5,7 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
 
 class ConnectivityCubit extends Cubit<InternetStatus> {
   final InternetConnection internetConnection;
-  ConnectivityCubit(this.internetConnection)
-      : super(InternetStatus.disconnected);
+  ConnectivityCubit(this.internetConnection) : super(InternetStatus.connected);
   StreamSubscription<InternetStatus>? _subscription;
 
   void listenConnectivity() {
