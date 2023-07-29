@@ -26,4 +26,8 @@ class GenreState extends Equatable {
       failure: failure ?? this.failure,
     );
   }
+
+  @override
+  String toString() =>
+      'GenreState(genres: $genres, loading: $loading, failure: $failure)';
 }
